@@ -5,8 +5,8 @@ from io import BytesIO
 st.title("CSV a Excel con columnas filtradas")
 
 columnas_deseadas = [
-    "Nombre", "Email", "Empresa", "Cargo", "Actividaddelaempresa", 
-    "PaisUser", "Celular", "Ciudad"
+    "Name", "Email", "EmpresaUser", "Cargo", "Actividaddelaempresa", 
+    "PaisUser", "CelularUser", "CiudadUser"
 ]
 
 archivo_csv = st.file_uploader("Sube tu archivo CSV", type="csv")
