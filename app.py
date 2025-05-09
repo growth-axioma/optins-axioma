@@ -4,10 +4,9 @@ from io import BytesIO
 
 st.title("CSV a Excel con columnas filtradas")
 
-# Columnas que deseas conservar
 columnas_deseadas = [
-    "Name", "Email", "EmpresaUser", "Cargo", "Actividaddelaempresa", 
-    "PaisUser", "CelularUser", "CiudadUser"
+    "Nombre", "Email", "Empresa", "Cargo", "Actividaddelaempresa", 
+    "PaisUser", "Celular", "Ciudad"
 ]
 
 archivo_csv = st.file_uploader("Sube tu archivo CSV", type="csv")
@@ -22,11 +21,13 @@ if archivo_csv is not None:
         df_filtrado.to_excel(output, index=False, engine='openpyxl')
         output.seek(0)
 
+        nombre_excel = archivo_csv.name.replace(".csv", ".xlsx")
+
         st.success("Archivo procesado con éxito.")
         st.download_button(
             label="Descargar Excel",
             data=output,
-            file_name="resultado_filtrado.xlsx",
+            file_name=nombre_excel,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
     except Exception as e:
